@@ -10,6 +10,10 @@ import SwiftUI
 
 struct CreateRecipe: View {
     
+    init() {
+        UITableView.appearance().tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: Double.leastNonzeroMagnitude))
+    }
+    
     @State private var newRecipeItem = ""
     
     @State var titleWritten = ""
@@ -21,67 +25,58 @@ struct CreateRecipe: View {
     @State var step = ""
     
     var body: some View {
-        NavigationView {
-            VStack {
-                Form {
-                    Section(header: Text("Titre")) {
-                        TextField("Titre de la recette", text: $titleWritten, onEditingChanged: { (sucess) in
-                            print("On Editing: \(sucess)")
-                        }) {
-                            print("On commit")
+                    ScrollView {
+        VStack {
+            Form {
+                Section {
+                    HStack {
+                        Text("Créer une recette")
+                            .font(.title)
+                            .padding(.bottom, 10)
+                            .padding(.top, 20)
+                        
+                        Spacer()
+                    }
+                    TextField("Titre de la recette", text: $titleWritten, onEditingChanged: { (sucess) in
+                        print("On Editing: \(sucess)")
+                    }) {
+                        print("On commit")
+                    }
+                    Picker(selection: $index, label: Text("Catégorie")){
+                        ForEach(0..<categories.count) { x in
+                            Text(self.categories[x]).tag(x)
                         }
                     }
-                    Section(header: Text("Catégorie")) {
-                        Picker(selection: $index, label: Text("Catégorie")){
-                            ForEach(0..<categories.count) { x in
-                                Text(self.categories[x]).tag(x)
-                            }
-                        }
-                    }
+                    .padding(.bottom, 10)
                     
-                    Section(header: Text("Ingédients")) {
-                        VStack {
-                            HStack {
-                                Section {
-                                    TextField("Ingrédient", text: self.$ingredient)
-                                    Button(action: addIngredient) {
-                                        Image(systemName: "plus.circle.fill")
-                                            .foregroundColor(.red)
-                                            .imageScale(.large)
-                                    }
-                                }
-                            }
-                            //Display a list of ingredients in the ingredientsList after the user clicks on the button.
-                            Section {
-                                List {
-                                    ForEach(ingredientsList, id: \.self) {
-                                        Text($0)
-                                    }
-                                }
-                            }
+                    HStack {
+                        TextField("Ingrédient", text: self.$ingredient)
+                        Button(action: addIngredient) {
+                            Image(systemName: "plus.circle.fill")
+                                .foregroundColor(.red)
+                                .imageScale(.large)
+                        }
+
+                    }
+                    List {
+                        ForEach(ingredientsList, id: \.self) {
+                            Text($0)
                         }
                     }
-                    
-                    Section(header: Text("Etapes")) {
-                        VStack {
-                            HStack {
-                                Section {
-                                    TextField("Etape", text: self.$step)
-                                    Button(action: addStep) {
-                                        Image(systemName: "plus.circle.fill")
-                                            .foregroundColor(.yellow)
-                                            .imageScale(.large)
-                                    }
-                                }
-                            }
-                            Section {
-                                List {
-                                    ForEach(stepsList, id: \.self) {
-                                        Text($0)
-                                    }
-                                }
-                            }
+                    HStack {
+                        TextField("Etape", text: self.$step)
+                            .padding(.top, 10)
+                        Button(action: addStep) {
+                            Image(systemName: "plus.circle.fill")
+                                .foregroundColor(.yellow)
+                                .imageScale(.large)
                         }
+                    }
+                    List {
+                        ForEach(ingredientsList, id: \.self) {
+                            Text($0)
+                        }
+                        .padding(.bottom, 10)
                     }
                     Button("Enregistrer") {
                         /*
@@ -124,11 +119,16 @@ struct CreateRecipe: View {
                         
                         
                     }
+                    .padding(.top, 10)
                 }
                 
+                
+                //Display a list of ingredients in the ingredientsList after the user clicks on the button.
+                
+                
             }
-            
-        }.navigationBarTitle("Créer une recette")
+            }
+        }
     }
     
     func addIngredient() {
