@@ -1,0 +1,15 @@
+[
+    {
+        "title" : "Tzatziki",
+        "category" : "En-cas",
+        "ingredients" :["1 concombre","1 bouquet de menthe fraîche","4 cuillères à soupe d'huile d'olive","1 yaourt grec au lait de brebis"],
+        "steps": ["Râper le concombre et le faire dégorger 15 min.","Le mettre dans un saladier, ajouter l'ail écrasé, la menthe et le coriandre finement hachés, mettre le yaourt, l'huile, le sel et le poivre, remuer et mettre au frais.","Le servir très frais avec du pain grec en apéritif, ou tel quel en entrée."]
+    },
+   {
+       "title" : "Tzatziki",
+       "category" : "En-cas",
+       "ingredients" :["1 concombre","1 bouquet de menthe fraîche","4 cuillères à soupe d'huile d'olive","1 yaourt grec au lait de brebis"],
+       "steps": ["Râper le concombre et le faire dégorger 15 min.","Le mettre dans un saladier, ajouter l'ail écrasé, la menthe et le coriandre finement hachés, mettre le yaourt, l'huile, le sel et le poivre, remuer et mettre au frais.","Le servir très frais avec du pain grec en apéritif, ou tel quel en entrée."]
+   }
+    
+]

@@ -1,11 +1,10 @@
 //
 //  AppDelegate.swift
-//  cookIn
+//  Cook'in
 //
-//  Created by Custodio Anthony on 09/06/2020.
-//  Copyright © 2020 Stod. All rights reserved.
+//  Created by Kevin on 04/06/2020.
+//  Copyright © 2020 Kevin. All rights reserved.
 //
-
 import UIKit
 import CoreData
 
@@ -16,9 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let navigationBarAppearace = UINavigationBar.appearance()
+        navigationBarAppearace.barTintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        
         return true
     }
-
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
