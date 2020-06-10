@@ -12,6 +12,8 @@ struct CreateRecipe: View {
     
     init() {
         UITableView.appearance().tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: Double.leastNonzeroMagnitude))
+        
+                UITableView.appearance().backgroundColor = UIColor(named: "whiteDark")
     }
     
     @State private var newRecipeItem = ""
@@ -25,7 +27,6 @@ struct CreateRecipe: View {
     @State var step = ""
     
     var body: some View {
-                    ScrollView {
         VStack {
             Form {
                 Section {
@@ -56,7 +57,7 @@ struct CreateRecipe: View {
                                 .foregroundColor(.red)
                                 .imageScale(.large)
                         }
-
+                        
                     }
                     List {
                         ForEach(ingredientsList, id: \.self) {
@@ -126,7 +127,6 @@ struct CreateRecipe: View {
                 //Display a list of ingredients in the ingredientsList after the user clicks on the button.
                 
                 
-            }
             }
         }
     }
