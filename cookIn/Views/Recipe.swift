@@ -30,44 +30,41 @@ struct Recipe: View {
                     .font(.headline)
             }
             .background(/*@START_MENU_TOKEN@*/Color(red: 0.937, green: 0.498, blue: 0.447)/*@END_MENU_TOKEN@*/)
-            .padding(.bottom, 40)
+            .padding(.bottom, 15)
             
-            VStack {
-                HStack {
-                    Text("Ingrédients")
-                        .font(.title)
-                        .padding(.leading, 20)
-                    Spacer()
-                }
-                HStack {
-                    VStack {
-                        ForEach(self.jsonItem.ingredients, id: \.self) { ingredient in
-                            HStack {
-                                Image(systemName: "circle.fill").font(.system(size: 7))
-                                    .padding(.leading, 20)
-                                Text(ingredient)
-                                Spacer()
+            ScrollView {
+                VStack {
+                    HStack {
+                        Text("Ingrédients")
+                            .font(.title)
+                            .padding(.leading, 20)
+                            .padding(.top, 5)
+                        Spacer()
+                    }
+                    HStack {
+                        VStack {
+                            ForEach(self.jsonItem.ingredients, id: \.self) { ingredient in
+                                HStack {
+                                    Image(systemName: "circle.fill").font(.system(size: 7))
+                                        .padding(.leading, 20)
+                                    Text(ingredient)
+                                    Spacer()
+                                }
                             }
                         }
+                        Spacer()
+                    }.padding(.bottom, 20)
+                    
+                    HStack {
+                        Text("Etapes")
+                            .font(.title)
+                            .padding(.bottom, 20)
+                            .padding(.leading, 20)
+                        Spacer()
                     }
-                    Spacer()
-                }.padding(.bottom, 20)
-                
-                HStack {
-                    Text("Etapes")
-                        .font(.title)
-                        .padding(.bottom, 20)
-                        .padding(.leading, 20)
-                    Spacer()
-                }
-                HStack {
-                    VStack {
-                        ForEach(self.jsonItem.steps, id: \.self) { step in
-                            HStack{
-                                //                                VStack {
-                                //                                    Text("\(self.stepCounter)")
-                                //                                }
-                                //                                .onAppear(perform: {self.stepCounter += 1})
+                    HStack {
+                        VStack {
+                            ForEach(self.jsonItem.steps, id: \.self) { step in
                                 HStack {
                                     Text(step)
                                         .padding(.leading, 20)
@@ -76,11 +73,11 @@ struct Recipe: View {
                                 }
                             }
                         }
+                        Spacer()
                     }
-                    Spacer()
-                }
-            }.frame(width: UIScreen.main.bounds.width)
-            Spacer()
+                }.frame(width: UIScreen.main.bounds.width)
+                Spacer()
+            }
         }.frame(width: UIScreen.main.bounds.width)
     }
 }

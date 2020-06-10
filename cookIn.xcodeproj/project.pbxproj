@@ -210,12 +210,12 @@
 		479B37E2248FBEB6001252F9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				479B37E3248FBEFC001252F9 /* About.swift */,
 				479B37E6248FBF4C001252F9 /* ContentView.swift */,
 				47602199248FF5D3008C8EC2 /* CreateRecipe.swift */,
 				4760219C248FF64B008C8EC2 /* MyRecipes.swift */,
-				476021A2248FF78F008C8EC2 /* NavBar.swift */,
 				476021A5248FF7ED008C8EC2 /* Recipe.swift */,
+				476021A2248FF78F008C8EC2 /* NavBar.swift */,
+				479B37E3248FBEFC001252F9 /* About.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -673,7 +673,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"cookIn/Preview Content\"";
-				DEVELOPMENT_TEAM = 6JKW74CHHA;
+				DEVELOPMENT_TEAM = UXT2FVKZ9N;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = cookIn/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -694,7 +694,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"cookIn/Preview Content\"";
-				DEVELOPMENT_TEAM = 6JKW74CHHA;
+				DEVELOPMENT_TEAM = UXT2FVKZ9N;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = cookIn/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

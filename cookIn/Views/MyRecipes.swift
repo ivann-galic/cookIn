@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct MyRecipes: View {
-    
+      
     @ObservedObject var datas = JsonRequest()
     
     var body: some View {
@@ -27,7 +27,6 @@ struct MyRecipes: View {
                         NavigationLink(destination: Recipe(jsonItem: item)) {
                             VStack {
                                 Text(item.title)
-                                    .foregroundColor(.black)
                                 Text(item.category)
                                     .foregroundColor(.gray)
                                     .padding(.leading, -2)
