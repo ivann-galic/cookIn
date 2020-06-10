@@ -34,7 +34,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let contentView = NavBar().environment(\.managedObjectContext, context)
             
             window.rootViewController = UIHostingController(rootView: contentView
-                .environmentObject(RecipeModel(id: UUID(), title: "", category: "", ingredients: [""], steps: [""]))
+                .environmentObject(RecipeModel(id: UUID(), title: "", category: "", ingredients: "", steps: ""))
                 .environmentObject(Observable()))
             self.window = window
             window.makeKeyAndVisible()

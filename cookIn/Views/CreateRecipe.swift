@@ -16,8 +16,6 @@ struct CreateRecipe: View {
         UITableView.appearance().backgroundColor = UIColor(named: "whiteDark")
     }
     
-    @Environment(\.managedObjectContext) var managedObjectContext
-    @FetchRequest(fetchRequest: RecipesItem.getAllRecipesItems()) var recipeItems:FetchedResults<RecipesItem>
     @EnvironmentObject var itemData: Observable
     @State private var newRecipeItem = ""
     @State var titleWritten = ""
@@ -76,29 +74,15 @@ struct CreateRecipe: View {
                         }
                     }
                     List {
-                        ForEach(ingredientsList, id: \.self) {
+                        ForEach(stepsList, id: \.self) {
                             Text($0)
                         }
                         .padding(.bottom, 10)
                     }
                     Button("Enregistrer") {
                         self.itemData.addData(id: UUID(), title: self.titleWritten, category: self.categories[self.index], ingredient:self.ingredientsList, steps: self.stepsList)
-                        
-//                        let recipeObject = RecipesItem(context: self.managedObjectContext)
-//                        recipeObject.id = UUID()
-//                        recipeObject.title = self.titleWritten
-//                        recipeObject.category = self.categories[self.index]
-//                        recipeObject.ingredients = self.ingredientsList
-//                        recipeObject.steps = self.stepsList
-//
-//                        do {
-//                            try self.managedObjectContext.save()
-//                        } catch {
-//                            print(error)
-//                        }
-                        
-                    }
-                    .padding(.top, 10)
+   
+                    }.padding(.top, 10)
                 }
             }
         }
@@ -125,8 +109,6 @@ struct CreateRecipe: View {
         
         self.step = ""
     }
-    
-    
 }
 
 struct CreateRecipe_Previews: PreviewProvider {

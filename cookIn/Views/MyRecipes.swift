@@ -11,8 +11,6 @@ import CoreData
 
 struct MyRecipes: View {
     
-    @ObservedObject var datas = JsonRequest()
-    @FetchRequest(fetchRequest: RecipesItem.getAllRecipesItems()) var recipeItems:FetchedResults<RecipesItem>
     @EnvironmentObject var itemData: Observable
     
     var body: some View {
@@ -36,11 +34,11 @@ struct MyRecipes: View {
                             }
                         }
                     }
-                    .onDelete { (indexSet) in
-                        if let index = indexSet.first {
-                            self.datas.json.remove(at: index)
-                        }
-                    }
+//                    .onDelete { (indexSet) in
+//                        if let index = indexSet.first {
+//                            self.itemData.remove(at: index)
+//                        }
+//                    }
                 }
             }
         }

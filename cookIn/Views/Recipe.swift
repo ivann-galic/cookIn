@@ -6,6 +6,7 @@
 //  Copyright © 2020 Kevin. All rights reserved.
 //
 import SwiftUI
+import SwiftyJSON
 
 struct Recipe: View {
     
@@ -64,7 +65,8 @@ struct Recipe: View {
                     }
                     HStack {
                         VStack {
-                            ForEach(self.item.steps, id: \.self) { step in
+                            
+                            ForEach(stringToJson(recipeArray: self.item.steps), id: \.self) { step in
                                 HStack {
                                     Text(step)
                                         .padding(.leading, 20)
@@ -80,6 +82,18 @@ struct Recipe: View {
             }
         }.frame(width: UIScreen.main.bounds.width)
     }
+    
+    func stringToJson (recipeArray: String) -> [JSON] {
+        let jsonEncoder = JSONEncoder()
+        
+        let data = try! jsonEncoder.encode(recipeArray)
+        
+        let string = String(data: data, encoding: String.Encoding.utf8)
+        
+        let jsonArray: [JSON] = [JSON.init(parseJSON: string!)]
+                   
+        return jsonArray
+    }
 }
 
 struct Recipe_Previews: PreviewProvider {
@@ -87,6 +101,6 @@ struct Recipe_Previews: PreviewProvider {
     @State var jsonItem: RecipeModel
     
     static var previews: some View {
-        Recipe(item: RecipeModel(id: UUID(),title: "Pancakes", category: "catégorie", ingredients: ["bla", "blou"], steps: ["1", "2"]))
+        Recipe(item: RecipeModel(id: UUID(),title: "Pancakes", category: "catégorie", ingredients: "blou", steps: "2"))
     }
 }

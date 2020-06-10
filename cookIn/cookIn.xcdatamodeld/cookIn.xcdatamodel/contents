@@ -3,8 +3,8 @@
     <entity name="RecipesItem" representedClassName="RecipesItem" syncable="YES">
         <attribute name="category" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="ingredient" optional="YES" attributeType="String"/>
-        <attribute name="steps" optional="YES" attributeType="String"/>
+        <attribute name="ingredient" optional="YES" attributeType="String" customClassName="[String]"/>
+        <attribute name="steps" optional="YES" attributeType="String" customClassName="[String]"/>
         <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
     <elements>
