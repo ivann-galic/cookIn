@@ -39,6 +39,7 @@
 		479B37E8248FBF4C001252F9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479B37E6248FBF4C001252F9 /* ContentView.swift */; };
 		AD012AFA68DACF327751F8F1 /* Pods_cookIn_cookInUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 249987AF419ED16EA7D8D89B /* Pods_cookIn_cookInUITests.framework */; };
 		EA35DB4949B24E411FE11EB9 /* Pods_cookIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F1A27296526C2628E82787F /* Pods_cookIn.framework */; };
+		FC563F23249179B100ABC282 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC563F22249179B100ABC282 /* Observable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,7 @@
 		96FCB5560A02C1DE88DBCE64 /* Pods-cookIn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cookIn.release.xcconfig"; path = "Target Support Files/Pods-cookIn/Pods-cookIn.release.xcconfig"; sourceTree = "<group>"; };
 		E8F0BBCA34B6C5E9DD7AD708 /* Pods-cookIn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cookIn.debug.xcconfig"; path = "Target Support Files/Pods-cookIn/Pods-cookIn.debug.xcconfig"; sourceTree = "<group>"; };
 		EA7BC6D6C14C3B6542A5033D /* Pods-cookIn-cookInUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cookIn-cookInUITests.debug.xcconfig"; path = "Target Support Files/Pods-cookIn-cookInUITests/Pods-cookIn-cookInUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		FC563F22249179B100ABC282 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				479B37DF248FBE7B001252F9 /* RecipeModel.swift */,
+				FC563F22249179B100ABC282 /* Observable.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -485,6 +488,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC563F23249179B100ABC282 /* Observable.swift in Sources */,
 				4760219D248FF64B008C8EC2 /* MyRecipes.swift in Sources */,
 				476021A0248FF6FC008C8EC2 /* Json.swift in Sources */,
 				476021A9248FF879008C8EC2 /* RecipesItem.swift in Sources */,

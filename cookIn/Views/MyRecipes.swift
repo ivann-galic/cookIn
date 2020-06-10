@@ -7,10 +7,13 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct MyRecipes: View {
-      
+    
     @ObservedObject var datas = JsonRequest()
+    @FetchRequest(fetchRequest: RecipesItem.getAllRecipesItems()) var recipeItems:FetchedResults<RecipesItem>
+    @EnvironmentObject var itemData: Observable
     
     var body: some View {
         VStack {
@@ -23,15 +26,14 @@ struct MyRecipes: View {
             }
             VStack {
                 List {
-                    ForEach(datas.json) { item in
-                        NavigationLink(destination: Recipe(jsonItem: item)) {
+                    ForEach(self.itemData.data) { i in
+                        NavigationLink(destination: Recipe(item: i)) {
                             VStack {
-                                Text(item.title)
-                                Text(item.category)
+                                Text(i.title)
+                                Text(i.category)
                                     .foregroundColor(.gray)
                                     .padding(.leading, -2)
                             }
-                            
                         }
                     }
                     .onDelete { (indexSet) in

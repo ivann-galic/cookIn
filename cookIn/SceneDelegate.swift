@@ -25,17 +25,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
-        let contentView = ContentView().environment(\.managedObjectContext, context)
         
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
             
             // Create the SwiftUI view that provides the window contents.
-            let contentView = NavBar()                   
+            let contentView = NavBar().environment(\.managedObjectContext, context)
             
             window.rootViewController = UIHostingController(rootView: contentView
-                .environmentObject(RecipeModel(title: "", category: "", ingredients: [""], steps: [""])))
+                .environmentObject(RecipeModel(id: UUID(), title: "", category: "", ingredients: [""], steps: [""]))
+                .environmentObject(Observable()))
             self.window = window
             window.makeKeyAndVisible()
         }

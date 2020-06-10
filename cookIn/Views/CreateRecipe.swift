@@ -7,24 +7,26 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct CreateRecipe: View {
     
     init() {
         UITableView.appearance().tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: Double.leastNonzeroMagnitude))
-        
-                UITableView.appearance().backgroundColor = UIColor(named: "whiteDark")
+        UITableView.appearance().backgroundColor = UIColor(named: "whiteDark")
     }
     
+    @Environment(\.managedObjectContext) var managedObjectContext
+    @FetchRequest(fetchRequest: RecipesItem.getAllRecipesItems()) var recipeItems:FetchedResults<RecipesItem>
+    @EnvironmentObject var itemData: Observable
     @State private var newRecipeItem = ""
-    
     @State var titleWritten = ""
     @State var index = 0
-    var categories = ["Petit-déjeuner", "Entrée", "Plat", "Dessert", "En-cas", "Apéritif", "Boisson"]
     @State var ingredientsList:[String] = []
     @State var ingredient = ""
     @State var stepsList:[String] = []
     @State var step = ""
+    var categories = ["Petit-déjeuner", "Entrée", "Plat", "Dessert", "En-cas", "Apéritif", "Boisson"]
     
     var body: some View {
         VStack {
@@ -80,53 +82,24 @@ struct CreateRecipe: View {
                         .padding(.bottom, 10)
                     }
                     Button("Enregistrer") {
-                        /*
-                         let recipeArray = ["title" : self.titleWritten, "category" : self.categories[self.index], "ingredients" : self.ingredientsList, "steps": self.stepsList] as [String : Any]
-                         
-                         do {
-                         let fileURL = try FileManager.default
-                         .url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-                         .appendingPathComponent("example.json")
-                         try JSONSerialization.data(withJSONObject: recipeArray)
-                         .write(to: fileURL)
-                         print(fileURL)
-                         } catch {
-                         print(error)
-                         }*/
+                        self.itemData.addData(id: UUID(), title: self.titleWritten, category: self.categories[self.index], ingredient:self.ingredientsList, steps: self.stepsList)
                         
-                        
-                        
-                        
-                        
-                        /*
-                         guard let documentDirectoryUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-                         
-                         let fileUrl = documentDirectoryUrl.appendingPathComponent("Recipes.json")
-                         
-                         let recipeArray = ["title" : self.titleWritten, "category" : self.categories[self.index], "ingredients" : self.ingredientsList, "steps": self.stepsList] as [String : Any]
-                         let encoder = JSONEncoder()
-                         
-                         let data = try! encoder.encode([RecipeModel].self, from: data)
-                         print(data)
-                         
-                         print(recipeArray)*/
-                        
-                        /*
-                         let recipe = RecipeModel(title: self.titleWritten, category: self.categories[self.index], ingredients: self.ingredientsList, steps: self.stepsList)
-                         let encoder = JSONEncoder()
-                         
-                         let data = try! encoder.encode(recipe)
-                         print(data)*/
-                        
+//                        let recipeObject = RecipesItem(context: self.managedObjectContext)
+//                        recipeObject.id = UUID()
+//                        recipeObject.title = self.titleWritten
+//                        recipeObject.category = self.categories[self.index]
+//                        recipeObject.ingredients = self.ingredientsList
+//                        recipeObject.steps = self.stepsList
+//
+//                        do {
+//                            try self.managedObjectContext.save()
+//                        } catch {
+//                            print(error)
+//                        }
                         
                     }
                     .padding(.top, 10)
                 }
-                
-                
-                //Display a list of ingredients in the ingredientsList after the user clicks on the button.
-                
-                
             }
         }
     }

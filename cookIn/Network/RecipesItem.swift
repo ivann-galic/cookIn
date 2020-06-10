@@ -9,11 +9,11 @@ import Foundation
 import CoreData
 
 public class RecipesItem:NSManagedObject, Identifiable {
-    @NSManaged public var id:Date?
+    @NSManaged public var id:UUID?
     @NSManaged public var title:String?
     @NSManaged public var category:String?
-    /*@NSManaged public var ingredients:String?
-     @NSManaged public var steps:String?*/
+    @NSManaged public var ingredients:[String]?
+    @NSManaged public var steps:[String]?
 }
 
 extension RecipesItem {

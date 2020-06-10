@@ -9,19 +9,19 @@ import SwiftUI
 
 struct Recipe: View {
     
-    @State var jsonItem: RecipeModel
+    @State var item: RecipeModel
     
     var body: some View {
         VStack {
             VStack {
-                Text(self.jsonItem.title)
+                Text(self.item.title)
                     .font(.title)
                     .padding(.bottom, 10)
                     .padding(.top, 20)
             }
             
             VStack {
-                Text(self.jsonItem.category)
+                Text(self.item.category)
                     .padding(.trailing, 10)
                     .padding(.leading, 10)
                     .padding(.top, 5)
@@ -43,7 +43,7 @@ struct Recipe: View {
                     }
                     HStack {
                         VStack {
-                            ForEach(self.jsonItem.ingredients, id: \.self) { ingredient in
+                            ForEach(self.item.ingredients, id: \.self) { ingredient in
                                 HStack {
                                     Image(systemName: "circle.fill").font(.system(size: 7))
                                         .padding(.leading, 20)
@@ -64,7 +64,7 @@ struct Recipe: View {
                     }
                     HStack {
                         VStack {
-                            ForEach(self.jsonItem.steps, id: \.self) { step in
+                            ForEach(self.item.steps, id: \.self) { step in
                                 HStack {
                                     Text(step)
                                         .padding(.leading, 20)
@@ -87,6 +87,6 @@ struct Recipe_Previews: PreviewProvider {
     @State var jsonItem: RecipeModel
     
     static var previews: some View {
-        Recipe(jsonItem: RecipeModel(title: "Pancakes", category: "catégorie", ingredients: ["bla", "blou"], steps: ["1", "2"]))
+        Recipe(item: RecipeModel(id: UUID(),title: "Pancakes", category: "catégorie", ingredients: ["bla", "blou"], steps: ["1", "2"]))
     }
 }
