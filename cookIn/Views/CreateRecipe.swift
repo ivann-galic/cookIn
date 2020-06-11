@@ -14,8 +14,14 @@ struct CreateRecipe: View {
     init() {
         UITableView.appearance().tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: Double.leastNonzeroMagnitude))
         UITableView.appearance().backgroundColor = UIColor(named: "whiteDark")
+        
+        // To remove only extra separators below the list:
+        UITableView.appearance().tableFooterView = UIView()
+
+        // To remove all separators including the actual ones:
+        UITableView.appearance().separatorStyle = .none
     }
-    
+    @State var showAlert = false
     @EnvironmentObject var itemData: Observable
     @State private var newRecipeItem = ""
     @State var titleWritten = ""
@@ -81,8 +87,22 @@ struct CreateRecipe: View {
                     }
                     Button("Enregistrer") {
                         self.itemData.addData(id: UUID(), title: self.titleWritten, category: self.categories[self.index], ingredient:self.ingredientsList, steps: self.stepsList)
-   
-                    }.padding(.top, 10)
+                        
+                        self.titleWritten = ""
+                        self.ingredientsList = []
+                        self.stepsList = []
+                        self.step = ""
+                        self.ingredient = ""
+                        self.showAlert.toggle()
+                        
+                        
+                        
+                    }.multilineTextAlignment(.center)
+                    .padding(.top, 10)
+                    .alert(isPresented: $showAlert) {
+                        Alert(title: Text("Félicitation !"), message: Text("Recette enregistrée"), dismissButton: .default(Text("Ok")))
+                            
+                    }
                 }
             }
         }

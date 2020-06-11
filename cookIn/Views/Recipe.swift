@@ -82,18 +82,6 @@ struct Recipe: View {
             }
         }.frame(width: UIScreen.main.bounds.width)
     }
-    
-//    func stringToJson (recipeArray: String) -> [JSON] {
-//        let jsonEncoder = JSONEncoder()
-//        
-//        let data = try! jsonEncoder.encode(recipeArray)
-//        
-//        let string = String(data: data, encoding: String.Encoding.utf8)
-//        
-//        let jsonArray: [JSON] = [JSON.init(parseJSON: string!)]
-//                   
-//        return jsonArray
-//    }
 }
 
 struct Recipe_Previews: PreviewProvider {

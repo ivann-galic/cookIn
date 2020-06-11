@@ -28,17 +28,18 @@ struct MyRecipes: View {
                         NavigationLink(destination: Recipe(item: i)) {
                             VStack {
                                 Text(i.title)
+                                .padding(.leading, -25)
                                 Text(i.category)
                                     .foregroundColor(.gray)
                                     .padding(.leading, -2)
                             }
                         }
                     }
-//                    .onDelete { (indexSet) in
-//                        if let index = indexSet.first {
-//                            self.itemData.remove(at: index)
-//                        }
-//                    }
+                    .onDelete { (indexSet) in
+                        if let index = indexSet.first {
+                            self.itemData.data.remove(at: index)
+                        }
+                    }
                 }
             }
         }
