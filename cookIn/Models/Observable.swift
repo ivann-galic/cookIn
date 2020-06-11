@@ -27,7 +27,7 @@ class Observable : ObservableObject{
             let res = try context.fetch(req)
             
             for i in res as! [NSManagedObject]{
-                self.data.append(RecipeModel(id: i.value(forKey: "id") as! UUID, title: i.value(forKey: "title") as! String, category: i.value(forKey: "category") as! String, ingredients: i.value(forKey: "ingredient") as! String, steps: i.value(forKey: "steps") as! String))
+                self.data.append(RecipeModel(id: i.value(forKey: "id") as! UUID, title: i.value(forKey: "title") as! String, category: i.value(forKey: "category") as! String, ingredients: i.value(forKey: "ingredient") as! [String], steps: i.value(forKey: "steps") as! [String]))
             }
         }
         catch{
@@ -36,25 +36,25 @@ class Observable : ObservableObject{
         }
     }
     
-    func addData(id: UUID, title: String, category: String, ingredient: String, steps: String){
+    func addData(id: UUID, title: String, category: String, ingredient: [String], steps: [String]){
         
-        let jsonEncoder = JSONEncoder()
-        
-        guard let dataIngredient = try? jsonEncoder.encode(ingredient) else { return print("errorjd") }
-        guard let dataSteps = try? jsonEncoder.encode(steps) else { return print("errorrj") }
-        
-        let stringIngredient = String(data: dataIngredient, encoding: String.Encoding.utf8)
-        let stringSteps = String(data: dataSteps, encoding: String.Encoding.utf8)
-        
-        let jsonIngredient: [JSON] = [JSON.init(parseJSON: stringIngredient!)]
-        let jsonSteps: [JSON] = [JSON.init(parseJSON: stringSteps!)]
-        
-        let castIngredient =  try! JSONSerialization.data(withJSONObject: jsonIngredient, options: JSONSerialization.WritingOptions.prettyPrinted)
-        let castSteps =  try! JSONSerialization.data(withJSONObject: jsonSteps, options: JSONSerialization.WritingOptions.prettyPrinted)
-                
-        let jsonToStringIngredient : String = String(data: castIngredient, encoding: String.Encoding.utf8)!
-        let jsonToStringSteps : String = String(data: castSteps, encoding: String.Encoding.utf8)!
-        
+//        let jsonEncoder = JSONEncoder()
+//
+//        guard let dataIngredient = try? jsonEncoder.encode(ingredient) else { return print("errorjd") }
+//        guard let dataSteps = try? jsonEncoder.encode(steps) else { return print("errorrj") }
+//
+//        let stringIngredient = String(data: dataIngredient, encoding: String.Encoding.utf8)
+//        let stringSteps = String(data: dataSteps, encoding: String.Encoding.utf8)
+//
+//        let jsonIngredient: [JSON] = [JSON.init(parseJSON: stringIngredient!)]
+//        let jsonSteps: [JSON] = [JSON.init(parseJSON: stringSteps!)]
+//
+//        let castIngredient =  try! JSONSerialization.data(withJSONObject: jsonIngredient, options: JSONSerialization.WritingOptions.prettyPrinted)
+//        let castSteps =  try! JSONSerialization.data(withJSONObject: jsonSteps, options: JSONSerialization.WritingOptions.prettyPrinted)
+//
+//        let jsonToStringIngredient : String = String(data: castIngredient, encoding: String.Encoding.utf8)!
+//        let jsonToStringSteps : String = String(data: castSteps, encoding: String.Encoding.utf8)!
+//
         let app = UIApplication.shared.delegate as! AppDelegate
         let context = app.persistentContainer.viewContext
         let entity = NSEntityDescription.insertNewObject(forEntityName: "RecipesItem", into: context)
@@ -69,7 +69,7 @@ class Observable : ObservableObject{
             try context.save()
             print("sucess")
             
-            data.append(RecipeModel(id: id, title: title, category: category, ingredients: jsonToStringIngredient, steps: jsonToStringSteps))
+            data.append(RecipeModel(id: id, title: title, category: category, ingredients: ingredient, steps: steps))
         }
         catch{
             print(error.localizedDescription)
